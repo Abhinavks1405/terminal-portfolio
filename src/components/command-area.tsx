@@ -7,17 +7,14 @@ interface CommandItem {
 }
 
 const Command: React.FC = () => {
-  const [command, setCommand] = useState<CommandItem[]>([]);
+  const [commandHistory, setCommandHistory] = useState<CommandItem[]>([]);
   const [currentCommand, setCurrentCommand] = useState<string>("");
   const [upArrowKeyPressed, setUpArrowKeyPressed] = useState<number>(0);
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    const handleClick = (event: MouseEvent) => {
-      if (
-        inputRef.current &&
-        !inputRef.current.contains(event.target as Node)
-      ) {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (inputRef.current && !inputRef.current.contains(event.target as Node)) {
         inputRef.current.scrollIntoView({
           behavior: "smooth",
           block: "nearest",
@@ -27,21 +24,32 @@ const Command: React.FC = () => {
       }
     };
 
-    document.addEventListener("click", handleClick);
+    document.addEventListener("click", handleClickOutside);
 
     return () => {
-      document.removeEventListener("click", handleClick);
+      document.removeEventListener("click", handleClickOutside);
     };
   }, []);
 
+  const handleCommandInput = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    keybindings(
+      e,
+      setCommandHistory,
+      setUpArrowKeyPressed,
+      setCurrentCommand,
+      currentCommand,
+      commandHistory,
+      upArrowKeyPressed
+    );
+  };
+
   return (
     <div>
-      {command.map((item, index) => (
+      {commandHistory.map((item, index) => (
         <div key={index}>
           <div className="flex flex-row mb-0.5">
-            <div className="text-teal-500 font-bold ml-10  selection:bg-yellow-900">
-              {" "}
-              visitor@jerry~${" "}
+            <div className="text-teal-500 font-bold ml-10 selection:bg-yellow-900">
+              visitor@mylo~$
             </div>
             <div className="ml-2 font-mono selection:bg-yellow-900">
               {item.command}
@@ -57,27 +65,16 @@ const Command: React.FC = () => {
       ))}
       <div className="flex flex-row">
         <div className="text-teal-500 font-bold ml-10 selection:bg-yellow-900">
-          {" "}
-          visitor@jerry~${" "}
+          visitor@mylo~$
         </div>
         <input
           className="bg-transparent outline-none border-none font-mono ml-2 text-amber-500 w-2/3"
           type="text"
           ref={inputRef}
           value={currentCommand}
-          autoFocus={true}
+          autoFocus
           onChange={(e) => setCurrentCommand(e.target.value)}
-          onKeyDown={(e) => {
-            keybindings(
-              e,
-              setCommand,
-              setUpArrowKeyPressed,
-              setCurrentCommand,
-              currentCommand,
-              command,
-              upArrowKeyPressed
-            );
-          }}
+          onKeyDown={handleCommandInput}
         />
       </div>
     </div>
