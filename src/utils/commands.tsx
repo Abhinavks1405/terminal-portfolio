@@ -37,14 +37,14 @@ export const getOutput = (
     case "about":
       return (
         <div>
-          Hi! Thanks for stalking me, lol! <br />I am{" "}
-          <span className="text-teal-400">Shubham Singh</span>, a 3rd year
+          Hello , Nice to meet you <br />I am{" "}
+          <span className="text-teal-400">Abhinav Kumar Singh</span>, a 3rd year
           undergraduate student at{" "}
           <span className="text-purple-400 ml-3">
             {" "}
-            <a href="http://dtu.ac.in">Delhi Technological University </a>{" "}
+            <a href="https://bvcoend.ac.in/">Bharati Vidyapeeth College of Engineering</a>{" "}
           </span>
-          pursuing my B.Tech in Software Engineering. Although, I rarely go
+          pursuing my B.Tech in Information Technology. Although, I rarely go
           there. I am mostly found in my room, working on some project or
           learning something new. I am also a huge{" "}
           <span className="text-teal-400">Linux </span>fanboy. I love being
@@ -68,20 +68,20 @@ export const getOutput = (
           First of all, thanks for showing interest in me! <br />
           Here are my internet coordinates - <br />
           <span className="text-purple-400 ml-3">
-            <a href="https://github.com/shubhexists">Github </a> -{" "}
+            <a href="https://github.com/Abhinavks1405">Github </a> -{" "}
           </span>
           Here you can find all my projects and contributions. <br />
           <span className="text-purple-400 ml-3">
-            <a href="https://www.linkedin.com/in/shubham-singh-36204b238/">
+            <a href="hhttps://www.linkedin.com/in/abhinavkumarsingh1405?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_appttps://www.linkedin.com/in/shubham-singh-36204b238/">
               LinkedIn{" "}
             </a>{" "}
             -{" "}
           </span>
           Here you can find my professional profile. (DMs preferred here) <br />
           <span className="text-purple-400 ml-3">
-            <a href="mailto:shubh622005@gmail.com">Mail </a> -{" "}
+            <a href="abhinavkumarsingh1405@gmail.com">Mail </a> -{" "}
           </span>
-          shubh622005@gmail.com <br />I guess, that's all :/ , I am not very
+          abhinavkumarsingh1405@gmail.com <br />I guess, that's all :/ , I am not very
           active on other platforms.
         </div>
       );

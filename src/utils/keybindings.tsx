@@ -6,6 +6,18 @@ interface CommandItem {
   output: JSX.Element | string;
 }
 
+const commandMappings: { [key: string]: string } = {
+  so: "socials",
+  sk: "skills",
+  a: "about",
+  p: "projects",
+  r: "resume",
+  c: "clear",
+  h: "help",
+  g: "goals",
+  e: "experience",
+};
+
 export const keybindings = (
   e: React.KeyboardEvent<HTMLInputElement>,
   setCommand: React.Dispatch<React.SetStateAction<CommandItem[]>>,
@@ -25,35 +37,22 @@ export const keybindings = (
     ]);
     setCurrentCommand("");
     setUpArrowKeyPressed(0);
-  } else if (e.keyCode === 38) {
+  } else if (e.key === "ArrowUp") {
     if (command.length > 0) {
       setUpArrowKeyPressed(upArrowKeyPressed + 1);
-      if (command.length - upArrowKeyPressed - 1 >= 0) {
-        setCurrentCommand(
-          command[command.length - upArrowKeyPressed - 1].command
-        );
+      const newIndex = command.length - upArrowKeyPressed - 1;
+      if (newIndex >= 0) {
+        setCurrentCommand(command[newIndex].command);
       }
     }
   } else if (e.key === "Tab") {
     e.preventDefault();
-    if (currentCommand.toLowerCase().startsWith("so")) {
-      setCurrentCommand("socials");
-    } else if (currentCommand.toLowerCase().startsWith("sk")) {
-      setCurrentCommand("skills");
-    } else if (currentCommand.toLowerCase().startsWith("a")) {
-      setCurrentCommand("about");
-    } else if (currentCommand.toLowerCase().startsWith("p")) {
-      setCurrentCommand("projects");
-    } else if (currentCommand.toLowerCase().startsWith("r")) {
-      setCurrentCommand("resume");
-    } else if (currentCommand.toLowerCase().startsWith("c")) {
-      setCurrentCommand("clear");
-    } else if (currentCommand.toLowerCase().startsWith("h")) {
-      setCurrentCommand("help");
-    } else if (currentCommand.toLowerCase().startsWith("g")) {
-      setCurrentCommand("goals");
-    } else if (currentCommand.toLowerCase().startsWith("e")) {
-      setCurrentCommand("experience");
+    const lowerCaseCommand = currentCommand.toLowerCase();
+    for (const [prefix, fullCommand] of Object.entries(commandMappings)) {
+      if (lowerCaseCommand.startsWith(prefix)) {
+        setCurrentCommand(fullCommand);
+        break;
+      }
     }
   }
 };
