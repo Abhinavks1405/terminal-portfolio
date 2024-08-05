@@ -703,3 +703,11 @@ video {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
+
+.custom-bg {
+  background-color: #000000; /* Black background */
+}
+
+.custom-text {
+  color: #ffffff; /* White text */
+}
