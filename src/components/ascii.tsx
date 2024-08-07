@@ -3,7 +3,7 @@
 const Ascii = () => {
   return (
     <div>
-      <pre className="text-left text-teal-400 font-bold mb-2 drop-shadow-xl selection:bg-yellow-900 selection:text-white">
+      <pre className="text-left text-blue-400 font-bold mb-2 drop-shadow-xl selection:bg-yellow-900 selection:text-white">
         {`
      █████╗ ██████╗ ██╗  ██╗██╗███╗   ██╗ █████╗ ██╗   ██╗
     ██╔══██╗██╔══██╗██║  ██║██║████╗  ██║██╔══██╗██║   ██║

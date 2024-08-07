@@ -48,7 +48,7 @@ const Command: React.FC = () => {
       {commandHistory.map((item, index) => (
         <div key={index}>
           <div className="flex flex-row mb-0.5">
-            <div className="text-teal-500 font-bold ml-10 selection:bg-yellow-900">
+            <div className="text-blue-300 font-bold ml-10 selection:bg-yellow-900">
               visitor@mylo~$
             </div>
             <div className="ml-2 font-mono selection:bg-yellow-900">
@@ -64,7 +64,7 @@ const Command: React.FC = () => {
         </div>
       ))}
       <div className="flex flex-row">
-        <div className="text-teal-500 font-bold ml-10 selection:bg-yellow-900">
+        <div className="text-blue-300 font-bold ml-10 selection:bg-yellow-900">
           visitor@mylo~$
         </div>
         <input
